@@ -9,7 +9,7 @@ it('Squared Array numbers', () => {
 it('only odd numbers', () => {
     const oddNumbers = getOddNumbers([1, 2, 3, 4]);
 
-    expect(oddNumbers).toEqual([2, 4]);
+    expect(oddNumbers).toEqual([1, 3]);
 });
 
 it('calc', () => {
