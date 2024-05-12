@@ -1,19 +1,19 @@
-import calc, {getSquaredArray, getOddNumbers} from './calculator';
+import calc, { getSquaredArray, getOddNumbers } from './calculator';
 
 it('Squared Array numbers', () => {
-    const sguaredNumbers = getSquaredArray([1, 2, 3]);
+  const sguaredNumbers = getSquaredArray([1, 2, 3]);
 
-    expect(sguaredNumbers).toEqual([1, 4, 9]);
+  expect(sguaredNumbers).toEqual([1, 4, 9]);
 });
 
 it('only odd numbers', () => {
-    const oddNumbers = getOddNumbers([1, 2, 3, 4]);
+  const oddNumbers = getOddNumbers([1, 2, 3, 4]);
 
-    expect(oddNumbers).toEqual([1, 3]);
+  expect(oddNumbers).toEqual([1, 3]);
 });
 
 it('calc', () => {
-    const addNumber = calc(2, 2);
+  const addNumber = calc(2, 2);
 
-    expect(addNumber).toEqual(4);
+  expect(addNumber).toEqual(4);
 });
