@@ -21,7 +21,7 @@ const tasks = [
  * sort list of item is done
  * append tags to site
  */
-export const createNewListItemElement = isDone => {
+const createNewListItemElement = isDone => {
   const listItemElement = document.createElement('li');
   listItemElement.classList.add('list__item');
   if (isDone) {
@@ -31,7 +31,7 @@ export const createNewListItemElement = isDone => {
   return listItemElement;
 };
 
-export const createNewCheckboxElement = isDone => {
+const createNewCheckboxElement = isDone => {
   const checkboxElement = document.createElement('input');
   checkboxElement.classList.add('list__item-checkbox');
   checkboxElement.setAttribute('type', 'checkbox');
@@ -42,7 +42,7 @@ export const createNewCheckboxElement = isDone => {
   return checkboxElement;
 };
 
-export const renderTasks = tasksList => {
+const renderTasks = tasksList => {
   const listElement = document.querySelector('.list');
 
   const listItemElement = tasksList
