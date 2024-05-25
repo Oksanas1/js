@@ -37,16 +37,12 @@ const renderSector = () => {
 
 areneElement.innerHTML = renderSector();
 
-const handler = event => {
+const onSeatSelected = event => {
   const targetObj = event.target;
 
-  if (!targetObj.classList.contains('sector__seat')) return null;
+  if (!targetObj.classList.contains('sector__seat')) return;
 
-  boardSeatElement.textContent = `S ${targetObj.closest('.sector').dataset.sectorNumber}
-    - L ${targetObj.closest('.sector__line').dataset.lineNumber}
-    - S ${targetObj.dataset.seatNumber}`;
-
-  return null;
+  boardSeatElement.textContent = `S ${targetObj.closest('.sector').dataset.sectorNumber} - L ${targetObj.closest('.sector__line').dataset.lineNumber} - S ${targetObj.dataset.seatNumber}`;
 };
 
-areneElement.addEventListener('click', handler);
+areneElement.addEventListener('click', onSeatSelected);
