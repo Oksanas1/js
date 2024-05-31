@@ -12,26 +12,24 @@ const renderNumber = (from, to) => {
 };
 
 const renderSeat = () => {
-  const numbersSeat = renderNumber(1, 10);
-
-  return numbersSeat
+  return renderNumber(1, 10)
     .map(number => `<div class="sector__seat" data-seat-number="${number}"></div>`)
     .join('');
 };
 
 const renderLine = () => {
-  const numbersLine = renderNumber(1, 10);
+  const seats = renderSeat();
 
-  return numbersLine
-    .map(number => `<div class="sector__line" data-line-number="${number}">${renderSeat()}</div>`)
+  return renderNumber(1, 10)
+    .map(number => `<div class="sector__line" data-line-number="${number}">${seats}</div>`)
     .join('');
 };
 
 const renderSector = () => {
-  const numbersSetors = renderNumber(1, 3);
+  const line = renderLine();
 
-  return numbersSetors
-    .map(number => `<div class="sector" data-sector-number="${number}">${renderLine()}</div>`)
+  return renderNumber(1, 3)
+    .map(number => `<div class="sector" data-sector-number="${number}">${line}</div>`)
     .join('');
 };
 
