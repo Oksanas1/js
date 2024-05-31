@@ -19,5 +19,10 @@ const onStorageChange = event => {
   countElement.textContent = event.newValue;
 };
 
+const onDocumnentChange = () => {
+  countElement.textContent = localStorage.getItem('countValue') || 0;
+};
+
 sectionCounterElement.addEventListener('click', heandller);
 window.addEventListener('storage', onStorageChange);
+document.addEventListener('DOMContentLoaded', onDocumnentChange);
