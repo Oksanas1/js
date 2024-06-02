@@ -1,7 +1,7 @@
 'uses strict';
 
-import { renderTasks } from './scripts/renderTasks.js';
-import { initTodoListHendlers } from './scripts/todoList.js';
+import { renderTasks } from './renderTasks.js';
+import { initTodoListHendlers } from './todoList.js';
 
 const initialPage = () => {
   renderTasks();
