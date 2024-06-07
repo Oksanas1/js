@@ -27,7 +27,28 @@ const onImageLoaded = (error, imgElem) => {
 
 // examples
 addImage(
-  'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
+  '1https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg',
   // 'https://server.com/image.png',
   onImageLoaded,
 );
+
+export const asyncCalculator = numb => new Promise((resolve) => {
+  setTimeout(() => {
+    console.log('Initial value: ' + numb);
+    resolve(numb);
+  }, 500);
+})
+  .then(number => new Promise((resolve) => {
+    setTimeout(() => {
+      const result = number * number;
+      console.log('Squared value: ' + result);
+      resolve(result);
+    }, 500);
+  }))
+  .then(number => {
+    const result = number * 2;
+    console.log('Squared value: ' + result);
+    return result;
+  });
+
+asyncCalculator(5);
