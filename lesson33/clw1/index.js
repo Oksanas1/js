@@ -28,4 +28,4 @@ const onSearchUser = () => {
     .then(userData => renderUserData(userData));
 }
 
-btnFormElem.addEventListener('click', onSearchUser)
+btnFormElem.addEventListener('click', onSearchUser);
