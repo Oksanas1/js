@@ -21,14 +21,6 @@ const createUserInBase = newUser => {
   });
 }
 
-const mapUsers = users => users.map(({ _id, ...rest }) => ({ id: _id, ...rest }));
-
-const getUsers = () => {
-  return fetch(baseUrl)
-    .then(response => response.json())
-    .then(users => users.mapUsers(users));
-}
-
 const createUser = () => {
   const { name, password, email } = loginFormElem.elements;
   const newUser = {
@@ -37,7 +29,9 @@ const createUser = () => {
     email: email.value,
   }
 
-  createUserInBase().finally(() => alert(JSON.stringify(newUser)));
+  createUserInBase(newUser)
+    .then(result => alert(result));
+
   userDataElements.map(input => input.value = "");
 };
 
