@@ -41,9 +41,14 @@ export function renderTasks() {
   listElement.textContent = '';
 
   const tasksList = getTasksList();
-
-    tasksList.then(tasks => tasks
-      .map(
-        ({ text, done, id }) => listElement.append(createTaskItemElement(text, done, id)))
-      );
+  tasksList.then(tasks => tasks
+    .map(
+      ({ text, done, id }) => listElement.append(createTaskItemElement(text, done, id)))
+    );
 }
+
+const onStorageChange = () => {
+  renderTasks();
+};
+
+window.addEventListener('storage', onStorageChange);
