@@ -16,15 +16,15 @@ const createUser = () => fetch(baseUrl, {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(Object.fromEntries(new FormData(loginFormElem))),
-  })
-  .then(response => response.json())
-  .then(result => alert(JSON.stringify(result)));
+  });
 
 const onSubmit = event => {
   event.preventDefault();
 
-  createUser();
-  loginFormElem.reset();
+  createUser()
+    .then(response => response.json())
+    .then(result => alert(JSON.stringify(result)))
+    .finally(loginFormElem.reset());
 }
 
 submitBtmElement.addEventListener('click', onSubmit);
