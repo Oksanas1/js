@@ -1,5 +1,5 @@
 import { fetchRepositories, fetchUserData } from "./script/getawey.js";
-import { cleanReposList, renderRepos } from "./script/repos.js";
+import { renderRepos } from "./script/repos.js";
 import { hidenSpinner, showSpinner } from "./script/spinner.js";
 import { renderUserData } from "./script/user.js";
 
@@ -16,7 +16,6 @@ renderUserData(defaultUser);
 const onSearchUser = ()=> {
   showSpinner();
 
-  cleanReposList();
   const userName = nameInputElem.value;
   fetchUserData(userName)
     .then(userData => {
