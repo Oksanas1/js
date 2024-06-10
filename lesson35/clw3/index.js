@@ -30,7 +30,9 @@ const onSearchUser = ()=> {
     .catch(err => {
       alert(err.message);
     })
-    .finally(hidenSpinner());
+    .finally(() => {
+      hidenSpinner();
+    });
 };
 
 btnElement.addEventListener('click', onSearchUser);
