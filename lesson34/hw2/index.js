@@ -23,8 +23,10 @@ const onSubmit = event => {
 
   createUser()
     .then(response => response.json())
-    .then(result => alert(JSON.stringify(result)))
-    .finally(loginFormElem.reset());
+    .then(result => {
+      alert(JSON.stringify(result));
+      loginFormElem.reset()
+    });
 }
 
 submitBtmElement.addEventListener('click', onSubmit);
