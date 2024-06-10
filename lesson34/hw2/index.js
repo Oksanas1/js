@@ -3,7 +3,7 @@ const loginFormElem = document.querySelector('.login-form');
 const userDataElements = Array.from(document.querySelectorAll('.form-input'));
 const submitBtmElement = document.querySelector('.submit-button');
 
-const onInputChange = (e) => {
+const onInputChange = () => {
   const { name, password, email } = loginFormElem.elements;
   submitBtmElement.disabled = !(name.reportValidity() && password.reportValidity() && email.reportValidity());
 };
@@ -25,7 +25,7 @@ const onSubmit = event => {
     .then(response => response.json())
     .then(result => {
       alert(JSON.stringify(result));
-      loginFormElem.reset()
+      loginFormElem.reset();
     });
 }
 
