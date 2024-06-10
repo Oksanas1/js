@@ -14,9 +14,10 @@ const defaultUser = {
 renderUserData(defaultUser);
 
 const onSearchUser = ()=> {
-  showSpinner();
   cleanReposList();
   const userName = nameInputElem.value;
+  
+  showSpinner();
   fetchUserData(userName)
     .then(userData => {
       renderUserData(userData);
