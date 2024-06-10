@@ -12,7 +12,6 @@ const defaultUser = {
 };
 
 renderUserData(defaultUser);
-hidenSpinner();
 
 const onSearchUser = ()=> {
   showSpinner();
