@@ -16,7 +16,6 @@ renderUserData(defaultUser);
 const onSearchUser = ()=> {
   cleanReposList();
   const userName = nameInputElem.value;
-
   showSpinner();
   fetchUserData(userName)
     .then(userData => {
@@ -26,7 +25,7 @@ const onSearchUser = ()=> {
     .then(url => fetchRepositories(url))
     .then(reposList => {
       renderRepos(reposList);
-      userName = '';
+      nameInputElem.value = '';
     })
     .catch(err => {
       alert(err.message);
