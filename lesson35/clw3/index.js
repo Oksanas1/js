@@ -15,11 +15,23 @@ renderUserData(defaultUser);
 
 const onSearchUser = ()=> {
   showSpinner();
+
   cleanReposList();
-
   const userName = nameInputElem.value;
-  
-
+  fetchUserData(userName)
+    .then(userData => {
+      renderUserData(userData);
+      return userData.repos_url;
+    })
+    .then(url => fetchRepositories(url))
+    .then(reposList => {
+      renderRepos(reposList);
+      nameInputElem.value = '';
+    })
+    .catch(err => {
+      alert(err.message);
+    })
+    .finally(hidenSpinner());
 };
 
 btnElement.addEventListener('click', onSearchUser);
