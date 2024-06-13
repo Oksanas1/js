@@ -1,6 +1,4 @@
 import { getLocalStorageData } from './storage.js';
-import { getTasksList } from './tasksGateway.js';
-
 
 const listElement = document.querySelector('.list');
 
@@ -23,6 +21,14 @@ const createDeleteTaskBtnElem = id => {
   return deleteTaskBtnElem;
 };
 
+const createTextItemElem = text => {
+  const textItemElem = document.createElement('p');
+  textItemElem.textContent = text;
+  textItemElem.classList.add('list__item-description')
+
+  return textItemElem;
+};
+
 const createTaskItemElement = (text, done, id) => {
   const listItemElem = document.createElement('li');
   listItemElem.classList.add('list__item');
@@ -32,7 +38,12 @@ const createTaskItemElement = (text, done, id) => {
     listItemElem.classList.add('list__item_done');
   }
 
-  listItemElem.append(createTaskCheckboxElement(done, id), text, createDeleteTaskBtnElem(id));
+  listItemElem
+    .append(
+      createTaskCheckboxElement(done, id),
+      createTextItemElem(text),
+      createDeleteTaskBtnElem(id)
+    );
 
   return listItemElem;
 };
@@ -40,15 +51,9 @@ const createTaskItemElement = (text, done, id) => {
 export function renderTasks() {
   listElement.textContent = '';
 
-  const tasksList = getTasksList();
-  tasksList.then(tasks => tasks
+  getLocalStorageData('tasksList')
     .map(
-      ({ text, done, id }) => listElement.append(createTaskItemElement(text, done, id)))
-    );
+      ({ text, done, id }) => listElement.append(createTaskItemElement(text, done, id)));
 }
 
-const onStorageChange = () => {
-  renderTasks();
-};
-
-window.addEventListener('storage', onStorageChange);
+window.addEventListener('storage', () => renderTasks());

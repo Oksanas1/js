@@ -1,6 +1,6 @@
-import { getLocalStorageData, setToLocalStorageData } from './storage.js';
 import { renderTasks } from './renderTasks.js';
-import { createTaskInBase } from './tasksGateway.js';
+import { createTaskInBase, getTasksList } from './tasksGateway.js';
+import { setToLocalStorageData } from './storage.js';
 
 const renderID = () => Math.random().toString(16).slice(2);
 
@@ -13,8 +13,15 @@ const createTask = text => {
       finishDate: null,
     };
 
-  createTaskInBase(newTask);
-  renderTasks();
+  createTaskInBase(newTask)
+    .then(response => {
+      if (response.ok) {
+        getTasksList().then(tasks => {
+          setToLocalStorageData('tasksList', tasks);
+          renderTasks()
+        });
+      };
+    });
 };
 
 export const addTasks = () => {

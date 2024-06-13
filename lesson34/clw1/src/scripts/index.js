@@ -1,11 +1,14 @@
-'uses strict';
-
 import { renderTasks } from './renderTasks.js';
+import { setToLocalStorageData } from './storage.js';
+import { getTasksList } from './tasksGateway.js';
 import { initTodoListHendlers } from './todoList.js';
 
 const initialPage = () => {
-  renderTasks();
-  initTodoListHendlers();
+  getTasksList().then(taskList => {
+    setToLocalStorageData('tasksList', taskList);
+    renderTasks();
+    initTodoListHendlers();
+  });
 };
 
 document.addEventListener('DOMContentLoaded', initialPage);

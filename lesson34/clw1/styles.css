@@ -42,8 +42,15 @@ body {
 }
 
 .list__item_done {
-  text-decoration: line-through;
   opacity: 0.7;
+}
+
+.list__item-description {
+  flex: 1 1 0;
+}
+
+.list__item_done .list__item-description {
+  text-decoration: line-through;
 }
 
 .list__item:last-child {
